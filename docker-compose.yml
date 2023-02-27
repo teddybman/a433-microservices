@@ -8,23 +8,15 @@ services:
   item-app:
 
     # Currently app using following version (v1)
-    image: item-app:v1
+    image: teddybman/item-app:v1
   
     # Reversing port from 80 to 8080, change the host port if is already used by another service
     ports:
       - 80:8080
-
-    # This environment variables are needed by the app to connect to DB Host
-    environment:
-      - NODE_ENV=production
-      - DB_HOST=item-db
-    
+  
     # App will start once DB Host is running
     depends_on:
       - item-db
-
-    # Current app working directory
-    working_dir: /app
 
     # Folder where app is stored
     volumes:
