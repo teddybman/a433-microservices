@@ -22,9 +22,6 @@ services:
     volumes:
       - ./:/app
 
-    # start the app once mongodb is ready
-    command: sh -c "node ./bin/www"
-
     # self restarting when error occurs
     restart: on-failure
 
