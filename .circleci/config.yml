@@ -30,7 +30,7 @@ jobs:
 
 
 workflows:
-  frontend:
+  backend:
     jobs:
       - lint-dockerfile
       - test-app
