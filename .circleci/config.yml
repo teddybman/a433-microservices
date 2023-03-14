@@ -1,0 +1,40 @@
+# CircleCI config file for backend-app (karsajobs)
+version: 2.1
+executors:
+  docker:
+    docker:
+      - image: docker:stable
+jobs:
+  lint-dockerfile:
+    executor: docker
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Run hadolint
+          command: docker run --rm -i hadolint/hadolint < Dockerfile
+
+  test-app:
+    docker:
+      - image: cimg/go:1.19.3
+    steps:
+      - checkout
+      - run: go test -v -short --count=1 $(go list ./...)
+
+  build-backend:
+    executor: docker
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: sh build_push_image_karsajobs_ui.sh
+
+
+workflows:
+  frontend:
+    jobs:
+      - lint-dockerfile
+      - test-app
+      - build-backend
+
+      
+    

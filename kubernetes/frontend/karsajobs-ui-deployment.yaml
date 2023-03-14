@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-app
+  labels:
+    app: karsajobs
+    type: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: frontend
+  template:
+    metadata:
+      labels:
+        app: karsajobs
+        type: frontend
+    spec:
+      containers:
+      - name: frontend-app
+        image: teddybman/karsajobs-ui:latest
+        ports: 
+          - containerPort: 8000
