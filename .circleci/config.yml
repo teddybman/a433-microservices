@@ -1,3 +1,4 @@
+# CircleCI config file for frontend-app (karsajobs-ui)
 version: 2.1
 executors:
   docker:
