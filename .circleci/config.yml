@@ -11,7 +11,7 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-        - name: Run hadolint
+          name: Run hadolint
           command: docker run --rm -i hadolint/hadolint < Dockerfile
 
   build-frontend:
